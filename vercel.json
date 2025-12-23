@@ -1,0 +1,5 @@
+{
+  "name": "flowvahub",
+  "version": 2,
+  "buildCommand": "npm run build"
+}
