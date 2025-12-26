@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { supabase } from "@/lib/supabase"
 import Link from "next/link"
 import { Info } from "lucide-react"
+import { motion } from "framer-motion"
 
 export default function ForgotPassword() {
     const [loading, setLoading] = useState(false)
@@ -52,11 +53,19 @@ export default function ForgotPassword() {
         }
     }
 
+    const cardVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    }
+
     return (
         <div className="bg-primary px-3 h-screen w-full flex items-center justify-center">
-            <form
-                onSubmit={handleSubmit}
+            <motion.form
+               onSubmit={handleSubmit}
                 className="bg-white rounded-xl p-7.5 w-full max-w-105"
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
             >
                 <h1 className="font-bold text-2xl text-primary text-center">
                     Reset Password
@@ -104,7 +113,7 @@ export default function ForgotPassword() {
                         Sign in
                     </Link>
                 </p>
-            </form>
+            </motion.form>
         </div>
     )
 }
